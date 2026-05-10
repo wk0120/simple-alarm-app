@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Alarm</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app__header">
+      <h1 class="app__title">Simple Alarm</h1>
+      <p class="app__clock" id="clock">--:--:--</p>
+    </header>
+
+    <section class="card">
+      <h2 class="card__title">アラームを追加</h2>
+      <form class="form" id="alarmForm">
+        <label class="form__label" for="alarmTime">時刻</label>
+        <input class="form__input" type="time" id="alarmTime" required />
+
+        <label class="form__label" for="alarmLabel">ラベル（任意）</label>
+        <input class="form__input" type="text" id="alarmLabel" placeholder="例: 起床" maxlength="30" />
+
+        <button class="btn btn--primary" type="submit">追加</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2 class="card__title">アラーム一覧</h2>
+      <ul class="alarm-list" id="alarmList">
+        <li class="alarm-list__empty">まだアラームがないよ</li>
+      </ul>
+    </section>
+
+    <div class="modal" id="ringModal" hidden>
+      <div class="modal__panel">
+        <p class="modal__time" id="ringTime">--:--</p>
+        <p class="modal__label" id="ringLabel"></p>
+        <button class="btn btn--primary" id="stopBtn" type="button">停止</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
