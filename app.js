@@ -2,6 +2,7 @@
   const STORAGE_KEY = "simple-alarm:alarms";
 
   const clockEl = document.getElementById("clock");
+  const dateEl = document.getElementById("date");
   const formEl = document.getElementById("alarmForm");
   const timeInput = document.getElementById("alarmTime");
   const labelInput = document.getElementById("alarmLabel");
@@ -41,6 +42,12 @@
 
   function formatClock(d) {
     return `${pad2(d.getHours())}:${pad2(d.getMinutes())}:${pad2(d.getSeconds())}`;
+  }
+
+  const WEEKDAYS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
+  function formatDate(d) {
+    return `${WEEKDAYS[d.getDay()]} · ${d.getFullYear()}.${pad2(d.getMonth() + 1)}.${pad2(d.getDate())}`;
   }
 
   function tickKey(d) {
@@ -167,6 +174,7 @@
   function tick() {
     const now = new Date();
     clockEl.textContent = formatClock(now);
+    if (dateEl) dateEl.textContent = formatDate(now);
 
     const key = tickKey(now);
     if (key !== lastTickKey && now.getSeconds() === 0) {

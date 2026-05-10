@@ -3,41 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0d1a" />
   <title>Simple Alarm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="bg-orb bg-orb--a"></span>
+    <span class="bg-orb bg-orb--b"></span>
+    <span class="bg-orb bg-orb--c"></span>
+  </div>
+
   <main class="app">
     <header class="app__header">
+      <p class="app__eyebrow">YOUR PERSONAL TIMEKEEPER</p>
       <h1 class="app__title">Simple Alarm</h1>
       <p class="app__clock" id="clock">--:--:--</p>
+      <p class="app__date" id="date">&nbsp;</p>
     </header>
 
     <section class="card">
-      <h2 class="card__title">アラームを追加</h2>
+      <header class="card__head">
+        <span class="card__icon" aria-hidden="true">＋</span>
+        <h2 class="card__title">アラームを追加</h2>
+      </header>
       <form class="form" id="alarmForm">
-        <label class="form__label" for="alarmTime">時刻</label>
-        <input class="form__input" type="time" id="alarmTime" required />
+        <div class="form__row">
+          <label class="form__label" for="alarmTime">時刻</label>
+          <input class="form__input form__input--time" type="time" id="alarmTime" required />
+        </div>
 
-        <label class="form__label" for="alarmLabel">ラベル（任意）</label>
-        <input class="form__input" type="text" id="alarmLabel" placeholder="例: 起床" maxlength="30" />
+        <div class="form__row">
+          <label class="form__label" for="alarmLabel">ラベル（任意）</label>
+          <input class="form__input" type="text" id="alarmLabel" placeholder="例: 起床" maxlength="30" />
+        </div>
 
-        <button class="btn btn--primary" type="submit">追加</button>
+        <button class="btn btn--primary" type="submit">
+          <span class="btn__label">アラームを追加</span>
+          <span class="btn__shine" aria-hidden="true"></span>
+        </button>
       </form>
     </section>
 
     <section class="card">
-      <h2 class="card__title">アラーム一覧</h2>
+      <header class="card__head">
+        <span class="card__icon" aria-hidden="true">⏰</span>
+        <h2 class="card__title">アラーム一覧</h2>
+      </header>
       <ul class="alarm-list" id="alarmList">
         <li class="alarm-list__empty">まだアラームがないよ</li>
       </ul>
     </section>
 
+    <footer class="app__footer">
+      <span>Made with</span>
+      <span class="app__heart" aria-hidden="true">♥</span>
+      <span>by Claude</span>
+    </footer>
+
     <div class="modal" id="ringModal" hidden>
       <div class="modal__panel">
+        <div class="modal__pulse" aria-hidden="true"></div>
+        <p class="modal__eyebrow">ALARM</p>
         <p class="modal__time" id="ringTime">--:--</p>
         <p class="modal__label" id="ringLabel"></p>
-        <button class="btn btn--primary" id="stopBtn" type="button">停止</button>
+        <button class="btn btn--primary" id="stopBtn" type="button">
+          <span class="btn__label">停止する</span>
+          <span class="btn__shine" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
   </main>
